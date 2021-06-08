@@ -2,21 +2,23 @@ package prop;
 
 public class Properties {
 
-	public static String time = "3:00 pm";
+	public static String time = "4:30 pm";
 	
-	public static String firstName = "Testjun07";
-	public static String date = "2021-06-04";
-	public static String emailPatient_gps_web = "gpsjun04@mailinator.com";
-	public static String emailPatient_sd_web = "sdjun04@mailinator.com";
-	public static String emailPatient_gps_and = "gpsjun04and@mailinator.com";
-	public static String emailPatient_sd_and = "sdjun04and@mailinator.com";
-	public static String phone_gps_web = "7020210604";
-	public static String phone_sd_web = "7120210604";
-	public static String phone_gps_and = "7220210604";
-	public static String phone_sd_and = "7320210604";
+	public static String date = "2021-06-08";
 	
 	public static String FitnoteFromDate = "05/25";
 	public static String FitnoteExpirationDate = "06/10/2021";
+	
+	static String day = date.substring(date.length() - 2);
+	public static String firstName = "Testjun" + day;
+	public static String emailPatient_gps_web = "gpsjun" + day + "@mailinator.com";
+	public static String emailPatient_sd_web = "sdjun" + day + "@mailinator.com";
+	public static String emailPatient_gps_and = "gpsjun" + day + "and@mailinator.com";
+	public static String emailPatient_sd_and = "sdjun" + day + "and@mailinator.com";
+	public static String phone_gps_web = "70202106" + day;
+	public static String phone_sd_web = "71202106" + day;
+	public static String phone_gps_and = "72202106" + day;
+	public static String phone_sd_and = "73202106" + day;
 	
 	public static String lastName_gps_web = "Silva";
 	public static String lastName_sd_web = "Perera";
