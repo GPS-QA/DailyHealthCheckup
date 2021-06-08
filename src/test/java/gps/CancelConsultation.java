@@ -233,8 +233,6 @@ public class CancelConsultation {
 				.findElement(By.xpath("//td[contains(text(), '" + time + "')]//preceding-sibling::td//child::span"))
 				.getText();
 
-		System.out.println(msg);
-		System.out.println(status);
 		if (msg.equals(
 				"You will not be charged the full consultation fee, but will be charged a late cancellation fee of £10. Please click Confirm to proceed with your cancellation.")
 				&& status.equals("CANCELLED BY PATIENT")) {
@@ -301,8 +299,7 @@ public class CancelConsultation {
 		String status = driver
 				.findElement(By.xpath("//td[contains(text(), '" + time + "')]//preceding-sibling::td//child::span"))
 				.getText();
-		System.out.println(msg);
-		System.out.println(status);
+
 		if (msg.equals(
 				"Are you sure you want to cancel this order?")
 				&& status.equals("CANCELLED BY PATIENT")) {
