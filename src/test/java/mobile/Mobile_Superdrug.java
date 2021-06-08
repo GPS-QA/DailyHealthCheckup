@@ -13,21 +13,23 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class Mobile_Superdrug {
 	
 	WebDriver driver;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String firstName = "Testjun04";
-	String date = "2021-06-04";
-	String FitnoteFromDate = "05/25";
-	String FitnoteExpirationDate = "06/10/2021";
-	String lastName = "Fonseka";
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	String emailPatient = Properties.emailPatient_sd_and;
+	String passwordPatient = Properties.password;
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_sd_and;
+	String date = Properties.date;
+	String FitnoteFromDate = Properties.FitnoteFromDate;
+	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
+	String emailDoctor = Properties.emailDoctor;
+	String passwordDoctor = Properties.passwordDoctor;
+
 	String fullName = firstName + " " + lastName;
-	String emailDoctor = "doctortest@mailinator.com";
-	String passwordDoctor = "Qwerty123";
 
 	@BeforeClass
 	public void Setup() {

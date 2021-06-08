@@ -13,24 +13,26 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class CancelConsultation {
 
 	WebDriver driver;
 	JavascriptExecutor js;
 	ArrayList<String> tabs;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String emailPatient = "gpsjun07@mailinator.com";
-	String date = "2021-06-07";
-	String firstName = "Testjun07";
+	String emailPatient = Properties.emailPatient_gps_web;
+	String passwordPatient = Properties.password;
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_gps_web;
+	String emailDoctor = Properties.emailDoctor;
+	String passwordDoctor = Properties.passwordDoctor;
+	String date = Properties.date;
 	
+	String fullName = firstName + " " + lastName;
 	WebElement timeSlot;
 	String time;
-	String passwordPatient = "Thanu@93";
-	String lastName = "Silva";
-	String fullName = firstName + " " + lastName;
-	String emailDoctor = "doctortest@mailinator.com";
-	String passwordDoctor = "Qwerty123";
+	
 
 	@BeforeClass
 	public void Setup() {

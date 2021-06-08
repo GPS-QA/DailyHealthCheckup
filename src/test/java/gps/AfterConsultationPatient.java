@@ -11,16 +11,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class AfterConsultationPatient {
 
 	WebDriver driver;
 	JavascriptExecutor js;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String emailPatient = "gpsjun07@mailinator.com";
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	String passwordPatient = "Thanu@93";
+	String emailPatient = Properties.emailPatient_gps_web;
+	String passwordPatient = Properties.password;
 
 	@BeforeClass
 	public void Setup() {

@@ -16,6 +16,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class Superdrug {
 
 	WebDriver driver;
@@ -23,22 +25,19 @@ public class Superdrug {
 	ArrayList<String> tabs;
 	WebDriverWait wait;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String emailPatient = "sdjun07@mailinator.com";
-	String phone = "7120210607";
-	String firstName = "Testjun07";
-	String time = "5:00 pm";
-	String date = "2021-06-07";
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String FitnoteFromDate = "05/25";
-	String FitnoteExpirationDate = "06/10/2021";
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	String passwordPatient = "Thanu@93";
-	String lastName = "Perera";
+	String emailPatient = Properties.emailPatient_sd_web;
+	String passwordPatient = Properties.password;
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_sd_web;
+	String phone = Properties.phone_sd_web;
+	String time = Properties.time;
+	String date = Properties.date;
+	String FitnoteFromDate = Properties.FitnoteFromDate;
+	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
+	String emailDoctor = Properties.emailDoctor;
+	String passwordDoctor = Properties.passwordDoctor;
+	
 	String fullName = firstName + " " + lastName;
-	String emailDoctor = "doctortest@mailinator.com";
-	String passwordDoctor = "Qwerty123";
 
 	@BeforeClass
 	public void Setup() {

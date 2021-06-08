@@ -12,21 +12,21 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class AfterConsultationDoctor {
 
 	WebDriver driver;
 	JavascriptExecutor js;
 	ArrayList<String> tabs;
 	
-	//////////////////////////////////////////////////////////////////////////////////
-	String firstName = "Testjun07";
-	String date = "2021-06-07";
-	////////////////////////////////////////////////////////////////////////////////////
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_gps_web;
+	String date = Properties.date;
+	String emailDoctor = Properties.emailDoctor;
+	String passwordDoctor = Properties.passwordDoctor;
 	
-	String lastName = "Silva";
 	String fullName = firstName + " " + lastName;
-	String emailDoctor = "doctortest@mailinator.com";
-	String passwordDoctor = "Qwerty123";
 
 	@BeforeClass
 	public void Setup() {

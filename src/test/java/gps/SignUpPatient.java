@@ -12,20 +12,20 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class SignUpPatient {
 
 	WebDriver driver;
 	JavascriptExecutor js;
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String emailPatient = "gpsjun07@mailinator.com";
-	String phone = "7020210607";
-	String firstName = "Testjun07";
-	String time = "1:15 pm";
-
-	String passwordPatient = "Thanu@93";
-	String lastName = "Silva";
-
+	
+	String emailPatient = Properties.emailPatient_gps_web;
+	String passwordPatient = Properties.password;
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_gps_web;
+	String phone = Properties.phone_gps_web;
+	String time = Properties.time;
+	
 	@BeforeClass
 	public void Setup() {
 

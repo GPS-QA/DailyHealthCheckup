@@ -16,6 +16,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class Consultation {
 
 	WebDriver driver;
@@ -23,28 +25,26 @@ public class Consultation {
 	ArrayList<String> tabs;
 	WebDriverWait wait;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String emailPatient = "gpsjun04@mailinator.com";
-	String phone = "7020210604";
-	String firstName = "Testjun04";
-	String time = "3:00 pm";
-	String date = "2021-06-04";
-	String FitnoteFromDate = "05/25";
-	String FitnoteExpirationDate = "06/10/2021";
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	String passwordPatient = "Thanu@93";
-	String lastName = "Silva";
+	String emailPatient = Properties.emailPatient_gps_web;
+	String passwordPatient = Properties.password;
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_gps_web;
+	String phone = Properties.phone_gps_web;
+	String time = Properties.time;
+	String date = Properties.date;
+	String FitnoteFromDate = Properties.FitnoteFromDate;
+	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
+	String emailDoctor = Properties.emailDoctor;
+	String passwordDoctor = Properties.passwordDoctor;
+	String storeId = Properties.storeId;
+	String pin = Properties.pin;
+	
 	String fullName = firstName + " " + lastName;
-	String emailDoctor = "doctortest@mailinator.com";
-	String passwordDoctor = "Qwerty123";
 	int indexAt = emailPatient.indexOf("@");
 	String emailID = emailPatient.substring(0, indexAt);
+	WebElement timeSlot;
 	String code = "";
 	String orderNo = "";
-	String storeId = "6668";
-	String pin = "0000";
-	WebElement timeSlot;
 
 	@BeforeClass
 	public void Setup() {

@@ -12,22 +12,23 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class PrescriptionPortal {
+import prop.Properties;
+
+public class PrescriptionPortal{
 	
 	WebDriver driver;
-	JavascriptExecutor js; 
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String firstName = "Testjun07";
-	
-	String lastName = "Silva";
-	String fullName = firstName + " " + lastName;
-	String birthDate = "01031990";
-	String emailDoctor = "thanud@mailinator.com";
-	String emailVet = "thanuv@mailinator.com";
-	String emailPhamacist = "thanup@mailinator.com";
-	String password = "Thanu@93";
+	JavascriptExecutor js;
 
+	String firstName = Properties.firstName;
+	String lastName = Properties.lastName_gps_web;
+	String birthDate = Properties.birthDate;
+	String emailDoctorNonGPS = Properties.emailDoctorNonGPS;
+	String emailVet = Properties.emailVet;
+	String emailPhamacist = Properties.emailPhamacist;
+	String password = Properties.password;
+	
+	String fullName = firstName + " " + lastName;
+	
 	@BeforeClass
 	public void Setup() {
 
@@ -49,8 +50,10 @@ public class PrescriptionPortal {
 	@Test(priority = 1)
 	public void SignInDoctor() {
 
-		driver.findElement(By.id("username")).sendKeys(emailDoctor);
+		driver.findElement(By.id("username")).sendKeys(emailDoctorNonGPS);
 		driver.findElement(By.id("password")).sendKeys(password);
+		System.out.println(firstName);
+		
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 
 		try {

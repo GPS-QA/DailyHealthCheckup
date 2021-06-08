@@ -14,22 +14,23 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class PrescrptionChecker {
 
 	WebDriver driver;
 	JavascriptExecutor js;
 	ArrayList<String> tabs;
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String emailPatient = "gpsjun07@mailinator.com";
+	String emailPatient = Properties.emailPatient_gps_web;
+	String lastName = Properties.lastName_gps_web;
+	String storeId = Properties.storeId;
+	String pin = Properties.pin;
 
 	int indexAt = emailPatient.indexOf("@");
 	String emailID = emailPatient.substring(0, indexAt);
 	String code = "";
 	String orderNo = "";
-	String lastName = "Silva";
-	String storeId = "6668";
-	String pin = "0000";
 
 	@BeforeClass
 	public void Setup() {

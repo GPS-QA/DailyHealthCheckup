@@ -11,17 +11,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import prop.Properties;
+
 public class BookConsultation {
 
 	WebDriver driver;
 	JavascriptExecutor js;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String email = "gpsjun07@mailinator.com";
-	String time = "3:15 pm";
-
-	String password = "Thanu@93";
-
+	String emailPatient = Properties.emailPatient_gps_web;
+	String passwordPatient = Properties.password;
+	String time = Properties.time;
+	
 	@BeforeClass
 	public void Setup() {
 		System.setProperty("webdriver.chrome.driver", "D:\\ChromeDriver\\chromedriver.exe");
@@ -43,8 +43,8 @@ public class BookConsultation {
 		driver.findElement(By
 				.xpath("//a[@routerlink= '/faqs']//parent::li//following-sibling::li//following-sibling::li//child::a[@routerlink= '/register/login']"))
 				.click();
-		driver.findElement(By.id("email")).sendKeys(email);
-		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.id("email")).sendKeys(emailPatient);
+		driver.findElement(By.id("password")).sendKeys(passwordPatient);
 
 		driver.findElement(By.xpath("//button[contains(text(),'SIGN IN')]")).click();
 	}
