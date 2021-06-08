@@ -19,12 +19,10 @@ public class Mobile_Superdrug {
 	
 	WebDriver driver;
 
-	String emailPatient = Properties.emailPatient_sd_and;
-	String passwordPatient = Properties.password;
 	String firstName = Properties.firstName;
 	String lastName = Properties.lastName_sd_and;
 	String date = Properties.date;
-	String FitnoteFromDate = Properties.FitnoteFromDate;
+	String FitnoteFromDate = Properties.FitnoteFromDate();
 	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
 	String emailDoctor = Properties.emailDoctor;
 	String passwordDoctor = Properties.passwordDoctor;

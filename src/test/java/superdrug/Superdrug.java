@@ -32,7 +32,7 @@ public class Superdrug {
 	String phone = Properties.phone_sd_web;
 	//String time = Properties.time;
 	String date = Properties.date;
-	String FitnoteFromDate = Properties.FitnoteFromDate;
+	String FitnoteFromDate = Properties.FitnoteFromDate();
 	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
 	String emailDoctor = Properties.emailDoctor;
 	String passwordDoctor = Properties.passwordDoctor;

@@ -32,7 +32,7 @@ public class Consultation {
 	String phone = Properties.phone_gps_web;
 	//String time = Properties.time;
 	String date = Properties.date;
-	String FitnoteFromDate = Properties.FitnoteFromDate;
+	String FitnoteFromDate = Properties.FitnoteFromDate();
 	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
 	String emailDoctor = Properties.emailDoctor;
 	String passwordDoctor = Properties.passwordDoctor;
