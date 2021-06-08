@@ -24,7 +24,7 @@ public class SignUpPatient {
 	String firstName = Properties.firstName;
 	String lastName = Properties.lastName_gps_web;
 	String phone = Properties.phone_gps_web;
-	String time = Properties.time;
+	//String time = Properties.time;
 	
 	@BeforeClass
 	public void Setup() {
@@ -106,7 +106,8 @@ public class SignUpPatient {
 	@Test(priority = 2)
 	public void BookConsultation_Patient() {
 
-		driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
+		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
+		driver.findElement(By.xpath("//div[@class = 'slot-times']//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
 		driver.findElement(By.name("postcode")).sendKeys("LE11AA");
 		driver.findElement(By.xpath("//button[contains(text(),'Find Pharmacies')]")).click();

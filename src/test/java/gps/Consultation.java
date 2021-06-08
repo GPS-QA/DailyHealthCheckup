@@ -30,7 +30,7 @@ public class Consultation {
 	String firstName = Properties.firstName;
 	String lastName = Properties.lastName_gps_web;
 	String phone = Properties.phone_gps_web;
-	String time = Properties.time;
+	//String time = Properties.time;
 	String date = Properties.date;
 	String FitnoteFromDate = Properties.FitnoteFromDate;
 	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
@@ -45,6 +45,7 @@ public class Consultation {
 	WebElement timeSlot;
 	String code = "";
 	String orderNo = "";
+	String time = "";
 
 	@BeforeClass
 	public void Setup() {
@@ -160,7 +161,8 @@ public class Consultation {
 	@Test(priority = 4)
 	public void BookConsultationPatient() {
 
-		driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
+		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
+		driver.findElement(By.xpath("//div[@class = 'slot-times']//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
 		driver.findElement(By.name("postcode")).sendKeys("LE11AA");
 		driver.findElement(By.xpath("//button[contains(text(),'Find Pharmacies')]")).click();

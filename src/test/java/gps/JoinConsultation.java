@@ -30,7 +30,7 @@ public class JoinConsultation {
 	String firstName = Properties.firstName;
 	String lastName = Properties.lastName_gps_web;
 	String phone = Properties.phone_gps_web;
-	String time = Properties.time;
+	//String time = Properties.time;
 	String date = Properties.date;
 	String FitnoteFromDate = Properties.FitnoteFromDate;
 	String FitnoteExpirationDate = Properties.FitnoteExpirationDate;
@@ -45,6 +45,7 @@ public class JoinConsultation {
 	WebElement timeSlot;
 	String code = "";
 	String orderNo = "";
+	String time = "";
 	
 	@BeforeClass
 	public void Setup() {

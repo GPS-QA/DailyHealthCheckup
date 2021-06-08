@@ -2,7 +2,7 @@ package prop;
 
 public class Properties {
 
-	public static String time = "4:30 pm";
+	//public static String time = "5:15 pm";
 	
 	public static String date = "2021-06-08";
 	
@@ -17,8 +17,6 @@ public class Properties {
 	public static String emailPatient_sd_and = "sdjun" + day + "and@mailinator.com";
 	public static String phone_gps_web = "70202106" + day;
 	public static String phone_sd_web = "71202106" + day;
-	public static String phone_gps_and = "72202106" + day;
-	public static String phone_sd_and = "73202106" + day;
 	
 	public static String lastName_gps_web = "Silva";
 	public static String lastName_sd_web = "Perera";

@@ -20,7 +20,7 @@ public class BookConsultation {
 
 	String emailPatient = Properties.emailPatient_gps_web;
 	String passwordPatient = Properties.password;
-	String time = Properties.time;
+	//String time = Properties.time;
 	
 	@BeforeClass
 	public void Setup() {
@@ -59,7 +59,8 @@ public class BookConsultation {
 
 		SignIn();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
+		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
+		driver.findElement(By.xpath("//div[@class = 'slot-times']//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
 		driver.findElement(By.name("postcode")).sendKeys("LE11AA");
 		driver.findElement(By.xpath("//button[contains(text(),'Find Pharmacies')]")).click();
