@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing gps">
+	<test name="Prescrption Checker">
+         <classes>
+             <class name="gps.PrescrptionChecker"/>
+          </classes>
+     </test> 
+    <test name="Consultation">
+         <classes>
+             <class name="gps.AfterConsultationPatient"/>
+             <class name="gps.AfterConsultationDoctor"/>
+             <class name="gps.CancelConsultation"/>
+          </classes>
+     </test> 
+     <test name="Prescription Portal">
+         <classes>
+             <class name="gps.PrescriptionPortal"/>
+          </classes>
+     </test> 
+     <test name="Pharmacy">
+         <classes>
+             <class name="gps.Pharmacy"/>
+          </classes>
+     </test> 
+     <test name="Superdrug">
+         <classes>
+             <class name="superdrug.Superdrug"/>
+          </classes>
+     </test>
+</suite> 
