@@ -52,7 +52,6 @@ public class PrescriptionPortal{
 
 		driver.findElement(By.id("username")).sendKeys(emailDoctorNonGPS);
 		driver.findElement(By.id("password")).sendKeys(password);
-		System.out.println(firstName);
 		
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 
