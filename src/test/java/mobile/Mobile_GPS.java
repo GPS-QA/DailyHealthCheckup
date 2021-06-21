@@ -183,7 +183,7 @@ public class Mobile_GPS {
 		driver.findElement(By.xpath("//button[contains(text(), 'Send')]")).click();
 		
 		try {
-			Thread.sleep(60000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

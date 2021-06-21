@@ -159,7 +159,7 @@ public class Superdrug {
 	public void BookConsultationPatient() {
 
 		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
-		driver.findElement(By.xpath("//div[@class = 'slot-times']//button[1]")).click();
+		driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
 		driver.findElement(By.name("postcode")).sendKeys("LE11AA");
 		try {
@@ -225,7 +225,7 @@ public class Superdrug {
 		 */
 		driver.findElement(By.xpath("//a[contains(text(),'Join')]")).click();
 
-		wait = new WebDriverWait(driver, 500);
+		wait = new WebDriverWait(driver, 5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Join Call')]")));
 
 		driver.findElement(By.xpath("//button[contains(text(),'Join Call')]")).click();

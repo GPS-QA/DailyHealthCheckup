@@ -5,11 +5,19 @@
          <classes>
              <class name="gps.PrescrptionChecker"/>
           </classes>
-     </test> 
-    <test name="Consultation">
+     </test>
+    <test name="After Consultation Patient">
          <classes>
              <class name="gps.AfterConsultationPatient"/>
+          </classes>
+     </test> 
+     <test name="After Consultation Doctor">
+         <classes>
              <class name="gps.AfterConsultationDoctor"/>
+          </classes>
+     </test> 
+     <test name="Cancel Consultation">
+         <classes>
              <class name="gps.CancelConsultation"/>
           </classes>
      </test> 

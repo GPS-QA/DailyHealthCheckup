@@ -97,7 +97,7 @@ public class JoinConsultation {
 				.click();
 		driver.findElement(By.xpath("//a[contains(text(),'Join')]")).click();
 
-		wait = new WebDriverWait(driver, 500);
+		wait = new WebDriverWait(driver, 1000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Join Call')]")));
 
 		driver.findElement(By.xpath("//button[contains(text(),'Join Call')]")).click();

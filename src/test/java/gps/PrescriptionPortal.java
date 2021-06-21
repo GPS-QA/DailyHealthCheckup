@@ -178,7 +178,7 @@ public class PrescriptionPortal{
 		driver.findElement(By.name("strength")).sendKeys("10mg");
 		driver.findElement(By.xpath("//button[text() = 'OK']")).click();
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

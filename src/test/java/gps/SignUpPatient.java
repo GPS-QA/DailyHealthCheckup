@@ -107,7 +107,7 @@ public class SignUpPatient {
 	public void BookConsultation_Patient() {
 
 		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
-		driver.findElement(By.xpath("//div[@class = 'slot-times']//button[1]")).click();
+		driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
 		driver.findElement(By.name("postcode")).sendKeys("LE11AA");
 		driver.findElement(By.xpath("//button[contains(text(),'Find Pharmacies')]")).click();

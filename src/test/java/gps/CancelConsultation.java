@@ -140,7 +140,7 @@ public class CancelConsultation {
 
 		SignInPatient();
 		timeSlot = driver.findElement(By.xpath("//div[@class = 'slot-times']//button[2]"));
-		time = driver.findElement(By.xpath("//div[@class = 'slot-times']//button[2]")).getText();
+		time = driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[2]")).getText();
 		Book();
 
 		driver.findElement(
@@ -205,7 +205,7 @@ public class CancelConsultation {
 			e.printStackTrace();
 		}
 		js.executeScript("window.scrollBy(0,1000)");
-		timeSlot = driver.findElement(By.xpath("//div[@class = 'slot-times']//child::div//button[16]"));
+		timeSlot = driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//child::div//button[16]"));
 		time = driver.findElement(By.xpath("//div[@class = 'slot-times']//child::div//button[16]")).getText();
 		Book();
 
@@ -272,7 +272,7 @@ public class CancelConsultation {
 		}
 		driver.findElement(By.xpath("//div[@class = 'alternative']//child::div[3]//child::button")).click();
 
-		timeSlot = driver.findElement(By.xpath("//div[@class = 'slot-times']//button[5]"));
+		timeSlot = driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[5]"));
 		time = driver.findElement(By.xpath("//div[@class = 'slot-times']//button[5]")).getText();
 		Book();
 
@@ -326,7 +326,7 @@ public class CancelConsultation {
 			e.printStackTrace();
 		}
 		js.executeScript("window.scrollBy(0,200)");
-		timeSlot = driver.findElement(By.xpath("//div[@class = 'slot-times']//button[4]"));
+		timeSlot = driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[4]"));
 		time = driver.findElement(By.xpath("//div[@class = 'slot-times']//button[4]")).getText();
 		Book();
 		SignInDoctor();
