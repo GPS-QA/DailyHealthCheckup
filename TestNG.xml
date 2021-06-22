@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Testing gps">
-	<test name="Prescrption Checker">
+     <test name="Consultation">
          <classes>
-             <class name="gps.PrescrptionChecker"/>
-          </classes>
-     </test>
-    <test name="After Consultation Patient">
-         <classes>
-             <class name="gps.AfterConsultationPatient"/>
-          </classes>
-     </test> 
-     <test name="After Consultation Doctor">
-         <classes>
-             <class name="gps.AfterConsultationDoctor"/>
-          </classes>
-     </test> 
-     <test name="Cancel Consultation">
-         <classes>
-             <class name="gps.CancelConsultation"/>
+             <class name="gps.Consultation"/>
           </classes>
      </test> 
      <test name="Prescription Portal">

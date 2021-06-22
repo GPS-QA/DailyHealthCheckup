@@ -162,7 +162,7 @@ public class Consultation {
 	public void BookConsultationPatient() {
 
 		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
-		driver.findElement(By.xpath("//div[@class = 'slot-times']//button[1]")).click();
+		driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
 		driver.findElement(By.name("postcode")).sendKeys("LE11AA");
 		driver.findElement(By.xpath("//button[contains(text(),'Find Pharmacies')]")).click();
@@ -194,13 +194,8 @@ public class Consultation {
 		js.executeScript("window.scrollBy(0,200)");
 		driver.findElement(By.xpath("//button[contains(text(),'Confirm Payment')]")).click();
 
-		driver.findElement(By.xpath("//label[@for = 'agreeMedication']")).click();
-		driver.findElement(By.xpath("//label[@for = 'personalUse']")).click();
-		driver.findElement(By.xpath("//label[@for = 'agreeFees']")).click();
-		driver.findElement(By.xpath("//button[contains(text(),'Confirm Payment')]")).click();
-		
 		try {
-			Thread.sleep(12000);
+			Thread.sleep(15000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -225,6 +220,12 @@ public class Consultation {
 		 * Assert.assertEquals(current_url, expected_url);
 		 */
 
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Test(priority = 5)
@@ -237,15 +238,9 @@ public class Consultation {
 		// 5:00
 		// pm)']//following-sibling::td//child::app-join-video-call//child::a")).click();
 
-		try {
-			Thread.sleep(900000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
 		driver.findElement(By.xpath("//a[contains(text(),'Join')]")).click();
 
-		wait = new WebDriverWait(driver, 1000);
+		wait = new WebDriverWait(driver, 60000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Join Call')]")));
 
 		driver.findElement(By.xpath("//button[contains(text(),'Join Call')]")).click();
@@ -1470,8 +1465,13 @@ public class Consultation {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		driver.findElement(By.linkText("History"));
-
+		driver.findElement(By.linkText("History")).click();
+		try {
+			Thread.sleep(8000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		String statusDoctor = driver.findElement(By.xpath(
 				"//td[contains(text(), '" + fullName + "')]//following-sibling::td[@class = 'alert alert-success']"))
 				.getText();
@@ -1658,7 +1658,7 @@ public class Consultation {
 				.getText();
 
 		if (msg.equals(
-				"You will not be charged the full consultation fee, but will be charged a late cancellation fee of �10. Please click Confirm to proceed with your cancellation.")
+				"You will not be charged the full consultation fee, but will be charged a late cancellation fee of £10. Please click Confirm to proceed with your cancellation.")
 				&& status.equals("CANCELLED BY PATIENT")) {
 			Assert.assertTrue(true);
 		}
