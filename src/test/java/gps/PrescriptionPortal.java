@@ -6,7 +6,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,6 +21,7 @@ public class PrescriptionPortal{
 	
 	WebDriver driver;
 	JavascriptExecutor js;
+	WebDriverWait wait;
 
 	String firstName = Properties.firstName;
 	String lastName = Properties.lastName_gps_web;
@@ -178,11 +181,9 @@ public class PrescriptionPortal{
 		driver.findElement(By.name("formulation")).sendKeys("Formulation");
 		driver.findElement(By.name("strength")).sendKeys("10mg");
 		driver.findElement(By.xpath("//button[text() = 'OK']")).click();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
+		wait = new WebDriverWait(driver, 5000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label = 'Formulary Updated Successfully']")));
 
 		boolean message = driver.findElement(By.xpath("//div[@aria-label = 'Formulary Updated Successfully']"))
 				.isDisplayed();
