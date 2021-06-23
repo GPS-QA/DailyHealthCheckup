@@ -12,6 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import prop.Properties;
 
 public class PrescriptionPortal{
@@ -32,7 +33,7 @@ public class PrescriptionPortal{
 	@BeforeClass
 	public void Setup() {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\ChromeDriver\\chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
