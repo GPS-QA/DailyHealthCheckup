@@ -34,6 +34,7 @@ public class Properties {
 	public static String lastName_gps_web = "Silva";
 	public static String lastName_sd_web = "Perera";
 	public static String lastName_gps_and = "Wijerathna";
+	public static String lastName_gps_ios = "Bandara";
 	public static String lastName_sd_and = "Fonseka";
 	public static String birthDate = "01031990";
 	public static String password = "Thanu@93";
