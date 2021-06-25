@@ -15,8 +15,10 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import prop.Properties;
 
 public class Consultation {
@@ -67,7 +69,9 @@ public class Consultation {
 		driver.quit();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description = "Verify whether a patient can sign up to the patient app")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Sign up by patient")
 	public void SignUpPatient() {
 
 		driver.findElement(By
@@ -126,7 +130,9 @@ public class Consultation {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, description = "Verify whether a patient can logout from the patient app")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Logout by patient")
 	public void LogoutPatient() {
 
 		driver.findElement(By.id("menuLogout")).click();
@@ -137,7 +143,9 @@ public class Consultation {
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, description = "Verify whether a patient can sign in to the patient app")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Sign in by patient")
 	public void SignInPatient() {
 
 		// driver.findElement(By.xpath("//a[@routerlink=
@@ -159,7 +167,9 @@ public class Consultation {
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, description = "Verify whether a patient can book a video consultation appointment")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Book consultation by patient")
 	public void BookConsultationPatient() {
 
 		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
@@ -229,7 +239,9 @@ public class Consultation {
 		
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5, description = "Verify whether a patient can join in to a video consultation")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Join consultation by patient")
 	public void JoinConsultationPatient() {
 
 		// driver.findElement(By.xpath("//a[@routerlink=
@@ -256,7 +268,9 @@ public class Consultation {
 		Assert.assertTrue(endcall);
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6, description = "Verify whether a doctor can sign in to the doctor app")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Sign in by doctor")
 	public void SignInDoctor() {
 
 		js.executeScript("window.open('https://doctor.alt.thegpservice.com', '_blank');");
@@ -279,7 +293,9 @@ public class Consultation {
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7, description = "Verify whether a doctor can join in to a video consulation")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Join consultation by doctor")
 	public void JoinConsultationDoctor() {
 
 		driver.findElement(By.xpath("//a[contains(text(),'Video Consultations')]")).click();
@@ -397,7 +413,9 @@ public class Consultation {
 
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8, description = "Verify whether a doctor can send a message to a patient during the video consultation and also patient can see the message sent by the doctor")
+	@Severity(SeverityLevel.MINOR)
+	@Description("Send message by doctor")
 	public void sendMessageDoctor() {
 
 		driver.findElement(By.xpath("//input[@placeholder='Enter a message']")).sendKeys("Hello patient");
@@ -421,7 +439,9 @@ public class Consultation {
 		Assert.assertTrue(message);
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9, description = "Verify whether a patient can send a message to a doctor during the video consultation and also doctor can see the message sent by the patient")
+	@Severity(SeverityLevel.MINOR)
+	@Description("Send message by patient")
 	public void sendMessagePatient() {
 
 		driver.findElement(By.xpath("//input[@placeholder='Enter a message...']")).sendKeys("Hello doctor");
@@ -451,7 +471,9 @@ public class Consultation {
 		Assert.assertTrue(message);
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 10, description = "Verify whether a patient can send an image to a doctor during the video consultation and also doctor can see the image sent by the patient")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Send image by patient")
 	public void sendImagePatient() {
 
 		driver.switchTo().window(tabs.get(0));
@@ -496,7 +518,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 11)
+	@Test(priority = 11, description = "Verify whether a patient can send a document to a doctor during the video consultation and also doctor can see the document sent by the patient")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Send document by patient")
 	public void sendDocumentPatient() {
 
 		driver.switchTo().window(tabs.get(0));
@@ -541,7 +565,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 12)
+	@Test(priority = 12, description = "Verify whether a doctor can propose a prescription to a patient during the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Propose prescription by doctor")
 	public void proposePrescriptionDoctor() {
 
 		tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -563,7 +589,9 @@ public class Consultation {
 		Assert.assertTrue(ProposePrescription);
 	}
 
-	@Test(priority = 13)
+	@Test(priority = 13, description = "Verify whether a patient can accept the prescription proposed by the doctor")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Accept prescription by patient")
 	public void acceptPrescriptionPatient() {
 
 		driver.switchTo().window((String) tabs.get(0));
@@ -587,8 +615,10 @@ public class Consultation {
 		Assert.assertTrue(acceptPrescription);
 	}
 
-	@Test(priority = 14)
-	public void fillPrescriptionDoctor() {
+	@Test(priority = 14, description = "Verify whether a doctor can issue a prescription during the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Issue prescription by doctor")
+	public void issuePrescriptionDoctor() {
 
 		driver.switchTo().window((String) tabs.get(1));
 
@@ -641,7 +671,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 15)
+	@Test(priority = 15, description = "Verify whether a doctor can propose a fit note to a patient during the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Propose fit note by doctor")
 	public void proposeFitNoteDoctor() {
 
 		driver.findElement(By
@@ -660,7 +692,9 @@ public class Consultation {
 		Assert.assertTrue(ProposeFitNote);
 	}
 
-	@Test(priority = 16)
+	@Test(priority = 16, description = "Verify whether a patient can accept the fit note proposed by the doctor")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Accept fit note by patient")
 	public void acceptFitNotePatient() {
 
 		driver.switchTo().window((String) tabs.get(0));
@@ -683,8 +717,10 @@ public class Consultation {
 		Assert.assertTrue(acceptFitNote);
 	}
 
-	@Test(priority = 17)
-	public void fillFitNoteDoctor() {
+	@Test(priority = 17, description = "Verify whether a doctor can issue a fit note during the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Issue fit note by doctor")
+	public void issueFitNoteDoctor() {
 
 		driver.switchTo().window((String) tabs.get(1));
 
@@ -723,7 +759,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 18)
+	@Test(priority = 18, description = "Verify whether a doctor can propose a referral letter to a patient during the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Propose referral letter by doctor")
 	public void proposeReferralLetterDoctor() {
 
 		driver.findElement(By
@@ -742,7 +780,9 @@ public class Consultation {
 		Assert.assertTrue(ProposeReferralLetter);
 	}
 
-	@Test(priority = 19)
+	@Test(priority = 19, description = "Verify whether a patient can accept the referral letter proposed by the doctor")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Accept referral letter by patient")
 	public void acceptReferralLetterPatient() {
 
 		driver.switchTo().window((String) tabs.get(0));
@@ -766,8 +806,10 @@ public class Consultation {
 		Assert.assertTrue(acceptReferralLetter);
 	}
 
-	@Test(priority = 20)
-	public void fillReferralLetterDoctor() {
+	@Test(priority = 20, description = "Verify whether a doctor can issue a referral letter during the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Issue referral letter by doctor")
+	public void issueReferralLetterDoctor() {
 
 		driver.switchTo().window((String) tabs.get(1));
 
@@ -809,7 +851,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 21)
+	@Test(priority = 21, description = "Verify whether a doctor can extend the video consultation time")
+	@Severity(SeverityLevel.MINOR)
+	@Description("Extend call by doctor")
 	public void extendCallDoctor() {
 
 		driver.findElement(By.xpath("//button[@aria-controls = 'dropdown-dropup']")).click();
@@ -828,7 +872,9 @@ public class Consultation {
 		Assert.assertTrue(extend);
 	}
 
-	@Test(priority = 22)
+	@Test(priority = 22, description = "Verify whether a doctor can end the video consultation call")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("End call by doctor")
 	public void endCallDoctor() {
 
 		try {
@@ -883,7 +929,9 @@ public class Consultation {
 
 	}
 
-	@Test(priority = 23)
+	@Test(priority = 23, description = "Verify whether a doctor can view the fit note after the video consultation")
+	@Severity(SeverityLevel.MINOR)
+	@Description("View fit note by doctor")
 	public void viewFitnoteDoctor() {
 
 		driver.findElement(
@@ -932,7 +980,9 @@ public class Consultation {
 		driver.close();
 	}
 
-	@Test(priority = 24)
+	@Test(priority = 24, description = "Verify whether a doctor can view the referral letter after the video consultation")
+	@Severity(SeverityLevel.MINOR)
+	@Description("View referral letter by doctor")
 	public void viewReferralLetterDoctor() {
 
 		tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -983,7 +1033,9 @@ public class Consultation {
 		driver.close();
 	}
 
-	@Test(priority = 25)
+	@Test(priority = 25, description = "Verify whether a doctor can view the prescription after the video consultation")
+	@Severity(SeverityLevel.MINOR)
+	@Description("View prescription by doctor")
 	public void viewPrescriptionDoctor() {
 
 		tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -1026,7 +1078,9 @@ public class Consultation {
 		driver.close();
 	}
 
-	@Test(priority = 26)
+	@Test(priority = 26, description = "Verify whether a doctor can edit patient's notes after the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Edit notes by doctor")
 	public void editNotesDoctor() {
 
 		tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -1112,7 +1166,9 @@ public class Consultation {
 
 	}
 
-	@Test(priority = 27)
+	@Test(priority = 27, description = "Verify whether a patient can end the video consultation call")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("End call by patient")
 	public void endCallPatient() {
 
 		tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -1147,7 +1203,9 @@ public class Consultation {
 		Assert.assertTrue(status);
 	}
 
-	@Test(priority = 28)
+	@Test(priority = 28, description = "Verify whether a patient can view the fit note after the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("View fit note by patient")
 	public void ViewFitnotePatient() {
 
 		/*
@@ -1202,7 +1260,9 @@ public class Consultation {
 		driver.navigate().back();
 	}
 
-	@Test(priority = 29)
+	@Test(priority = 29, description = "Verify whether a patient can view the referral letter after the video consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("View referral letter by patient")
 	public void ViewReferralLetterPatient() {
 
 		WebElement ref = driver.findElement(By.linkText("View Referral Letter"));
@@ -1244,7 +1304,9 @@ public class Consultation {
 
 	}
 
-	@Test(priority = 30)
+	@Test(priority = 30, description = "Verify whether a patient can view the invoice of a paticular consultation")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("View invoice by patient")
 	public void ViewInvoicePatient() {
 
 		WebElement invoice = driver.findElement(By.linkText("View Invoice"));
@@ -1390,7 +1452,9 @@ public class Consultation {
 
 	}
 
-	@Test(priority = 31)
+	@Test(priority = 31, description = "Verify whether a phamacy can dispense a prescription via prescrption checker and verify whether video consultation order status change to complete in pharmacy app, doctor app and patient app")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Prescrption checker")
 	public void PrescrptionChecker() {
 
 		driver.switchTo().window((String) tabs.get(1));
@@ -1554,7 +1618,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 32)
+	@Test(priority = 32, description = "Cancel video consultation appointment less than 2 hours before the start of the appointment time by patient")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Cancel appointment less than 3hrs by patient")
 	public void CancelPatientLessThan3hrs() {
 		
 		driver.findElement(By.partialLinkText("SEE A DOCTOR")).click();
@@ -1608,7 +1674,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 33)
+	@Test(priority = 33, description = "Cancel video consultation appointment less than 23 hours but more than 2 hours before the start of the appointment time by patient")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Cancel appointment less than 24hrs by patient")
 	public void CancelPatientLessThan24hrs() {
 
 		driver.findElement(By.partialLinkText("SEE A DOCTOR")).click();
@@ -1674,7 +1742,9 @@ public class Consultation {
 		}
 	}
 
-	@Test(priority = 34)
+	@Test(priority = 34, description = "Cancel video consultation appointment more than 23 hours before the start of the appointment time by patient")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Cancel appointment more than 24hrs by patient")
 	public void CancelPatientMoreThan24hrs() {
 
 		driver.findElement(By.partialLinkText("SEE A DOCTOR")).click();
@@ -1741,7 +1811,9 @@ public class Consultation {
 		}
 	}
 	
-	@Test(priority = 35)
+	@Test(priority = 35, description = "Verify whether a patient can cancel video consultation appointment")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Cancel appointment by doctor")
 	public void CancelDoctor() {
 
 		driver.findElement(By.partialLinkText("SEE A DOCTOR")).click();
@@ -1820,7 +1892,9 @@ public class Consultation {
 		Assert.assertEquals(status, "CANCELLED BY DOCTOR");
 	}
 	
-	@Test(priority = 36)
+	@Test(priority = 36, description = "Verify whether a doctor can logout form the doctor app")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Log out by doctor")
 	public void LogoutDoctor() {
 
 		driver.switchTo().window((String) tabs.get(1));

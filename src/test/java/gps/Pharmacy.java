@@ -10,6 +10,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 public class Pharmacy {
 
@@ -33,7 +36,9 @@ public class Pharmacy {
 		driver.quit();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description = "Verify whether a pharmacist can sign in to the pharmacy app")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Sign in to pharmacy app")
 	public void SignIn() {
 
 		driver.findElement(By.id("username")).sendKeys("thanuji.wijerathna@thegpservice.co.uk");
@@ -52,7 +57,9 @@ public class Pharmacy {
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, description = "Verify whether a pharmacist can dispense a prescription from the prescription table view")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Dispense prescription")
 	public void Dispense() {
 
 		id = driver.findElement(By.xpath("//tbody/tr[1]/td[1]")).getText();
@@ -105,7 +112,9 @@ public class Pharmacy {
 
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, description = "Verify whether a pharmacist can complete a prescription from the prescription table view")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Complete a dispensed prescription")
 	public void Complete() {
 
 		driver.findElement(By.linkText("Pending")).click();
@@ -174,7 +183,9 @@ public class Pharmacy {
 
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, description = "Verify whether a pharmacist can reject a prescription from the prescription table view")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Reject prescription")
 	public void Reject() {
 
 		driver.findElement(By.linkText("Pending")).click();
@@ -229,7 +240,9 @@ public class Pharmacy {
 
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5, description = "Verify whether a pharmacist can dispense a prescription by navigating to the particular prescription")
+	@Severity(SeverityLevel.MINOR)
+	@Description("Dispense prescription - path 2")
 	public void ViewDispense() {
 
 		driver.findElement(By.linkText("Pending")).click();
@@ -304,7 +317,9 @@ public class Pharmacy {
 
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6, description = "Verify whether a pharmacist can complete a prescription by navigating to the particular prescription")
+	@Severity(SeverityLevel.MINOR)
+	@Description("Complete prescription - path 2")
 	public void ViewComplete() {
 
 		driver.findElement(By.linkText("Pending")).click();
@@ -400,7 +415,9 @@ public class Pharmacy {
 
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7, description = "Verify whether a pharmacist can reject a prescription by navigating to the particular prescription")
+	@Severity(SeverityLevel.MINOR)
+	@Description("Reject prescription")
 	public void ViewReject() {
 
 		driver.findElement(By.linkText("Pending")).click();
@@ -475,7 +492,9 @@ public class Pharmacy {
 
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8, description = "Verify whether a pharmacist can logout from the pharmacy app")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Logout form the pharmacy app")
 	public void Logout() {
 
 		driver.findElement(By.xpath("//a[@aria-haspopup='true']")).click();
