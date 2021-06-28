@@ -1,7 +1,14 @@
 package prop;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.ViewName;
 
 public class Properties {
 
@@ -45,5 +52,16 @@ public class Properties {
 	public static String passwordDoctor = "Qwerty123";
 	public static String storeId = "6668";
 	public static String pin = "0000";
+	
+	public static ExtentReports extent;
+	public static ExtentTest test;
+	
+	public static void report() throws IOException {
+		extent = new ExtentReports();
+		ExtentSparkReporter spark = new ExtentSparkReporter("test-output/DailyHealthCheckupReport.html").viewConfigurer().viewOrder().as(new ViewName[] {ViewName.DASHBOARD, ViewName.CATEGORY, ViewName.TEST}).apply();
+		final File CONF = new File("spark-config.xml");
+		spark.loadXMLConfig(CONF);
+		extent.attachReporter(spark);
+	}
 
 }

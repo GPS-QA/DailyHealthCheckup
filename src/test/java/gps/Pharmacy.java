@@ -5,10 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import prop.Properties;
 
 public class Pharmacy {
 
@@ -33,6 +36,20 @@ public class Pharmacy {
 		driver.quit();
 	}
 
+	@AfterMethod
+	public void getResult(ITestResult result) throws Exception {
+		
+		Properties.test = Properties.extent.createTest(result.getMethod().getDescription()).assignCategory("MyTest").assignAuthor("Thanuji Wijerathna");
+		if (result.getStatus() == ITestResult.FAILURE) {
+			Properties.test.fail(testDescription);
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			Properties.test.skip(testDescription);
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			Properties.test.pass(testDescription);
+		}
+		Properties.extent.flush();
+	}
+	
 	@Test(priority = 1, description = "Sign in to pharmacy app")
 	public void SignIn() {
 		testDescription = "Verify whether a pharmacist can sign in to the pharmacy app";

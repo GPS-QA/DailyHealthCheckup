@@ -1,5 +1,6 @@
 package gps;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -12,8 +13,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import prop.Properties;
@@ -67,6 +71,25 @@ public class Consultation {
 		driver.quit();
 	}
 
+	@BeforeSuite
+	public void beforeSuite() throws IOException{
+		Properties.report();
+	}
+	
+	@AfterMethod
+	public void getResult(ITestResult result) throws Exception {
+		
+		Properties.test = Properties.extent.createTest(result.getMethod().getDescription()).assignCategory("MyTest").assignAuthor("Thanuji Wijerathna");
+		if (result.getStatus() == ITestResult.FAILURE) {
+			Properties.test.fail(testDescription);
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			Properties.test.skip(testDescription);
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			Properties.test.pass(testDescription);
+		}
+		Properties.extent.flush();
+	}
+	
 	@Test(priority = 1, description = "Sign up by patient")
 	public void SignUpPatient() {
 		testDescription = "Verify whether a patient can sign up to the patient app";
