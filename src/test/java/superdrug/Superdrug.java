@@ -15,11 +15,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import prop.Properties;
 
 public class Superdrug {
@@ -42,6 +38,8 @@ public class Superdrug {
 	String passwordDoctor = Properties.passwordDoctor;
 	
 	String fullName = firstName + " " + lastName;
+	
+	String testDescription = "";
 
 	@BeforeClass
 	public void Setup() {
@@ -62,11 +60,9 @@ public class Superdrug {
 		driver.quit();
 	}
 
-	@Test(priority = 1, description = "Verify whether a patient can sign up to the patient app")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Sign up by patient")
+	@Test(priority = 1, description = "Sign up by patient")
 	public void SignUpPatient() {
-
+		testDescription = "Verify whether a patient can sign up to the patient app";
 		driver.findElement(By.xpath("//div[@class = 'row info routes']//child::a[text() = 'Register']")).click();
 		driver.findElement(By.id("email")).sendKeys(emailPatient);
 		driver.findElement(By.id("telnumber-field")).sendKeys(phone);
@@ -122,11 +118,9 @@ public class Superdrug {
 
 	}
 
-	@Test(priority = 2, description = "Verify whether a patient can logout from the patient app")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Logout by patient")
+	@Test(priority = 2, description = "Logout by patient")
 	public void LogoutPatient() {
-
+		testDescription = "Verify whether a patient can logout from the patient app";
 		driver.get("https://superdrug.alt.thegpservice.com");
 
 		driver.findElement(By.xpath("//div[@class = 'row info routes']//child::a[@id= 'menuLogout']")).click();
@@ -143,11 +137,9 @@ public class Superdrug {
 		}
 	}
 
-	@Test(priority = 3, description = "Verify whether a patient can sign in to the patient app")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Sign in by patient")
+	@Test(priority = 3, description = "Sign in by patient")
 	public void SignInPatient() {
-
+		testDescription = "Verify whether a patient can sign in to the patient app";
 		driver.findElement(By.xpath("//div[@class = 'row info routes']//child::a[text() = 'Sign In']")).click();
 		driver.findElement(By.id("email")).sendKeys(emailPatient);
 		driver.findElement(By.id("password")).sendKeys(passwordPatient);
@@ -165,11 +157,9 @@ public class Superdrug {
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 4, description = "Verify whether a patient can book a video consultation appointment")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Book consultation by patient")
+	@Test(priority = 4, description = "Book consultation by patient")
 	public void BookConsultationPatient() {
-
+		testDescription = "Verify whether a patient can book a video consultation appointment";
 		//driver.findElement(By.xpath("//button[contains(text(),'" + time + "')]")).click();
 		driver.findElement(By.xpath("//div[contains(@class, 'slot-times')]//button[1]")).click();
 		driver.findElement(By.id("presentingComplaint")).sendKeys("Additional details for the doctor");
@@ -223,11 +213,9 @@ public class Superdrug {
 
 	}
 
-	@Test(priority = 5, description = "Verify whether a patient can join in to a video consultation")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Join consultation by patient")
+	@Test(priority = 5, description = "Join consultation by patient")
 	public void JoinConsultationPatient() {
-
+		testDescription = "Verify whether a patient can join in to a video consultation";
 		/*
 		 * driver.get("https://superdrug.alt.thegpservice.com"); try {
 		 * Thread.sleep(8000); } catch (InterruptedException e) {
@@ -254,11 +242,9 @@ public class Superdrug {
 		Assert.assertTrue(endcall);
 	}
 
-	@Test(priority = 6, description = "Verify whether a doctor can sign in to the doctor app")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Sign in by doctor")
+	@Test(priority = 6, description = "Sign in by doctor")
 	public void SignInDoctor() {
-
+		testDescription = "Verify whether a doctor can sign in to the doctor app";
 		js.executeScript("window.open('https://doctor.alt.thegpservice.com', '_blank');");
 		tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window((String) tabs.get(1));
@@ -279,11 +265,9 @@ public class Superdrug {
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 7, description = "Verify whether a doctor can join in to a video consulation")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Join consultation by doctor")
+	@Test(priority = 7, description = "Join consultation by doctor")
 	public void JoinConsultationDoctor() {
-
+		testDescription = "Verify whether a doctor can join in to a video consulation";
 		driver.findElement(By.xpath("//a[contains(text(),'Video Consultations')]")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Booked')]")).click();
 		driver.findElement(By.xpath("//h4[contains(text(), '" + date + "')]//parent::div")).click();
@@ -390,11 +374,9 @@ public class Superdrug {
 
 	}
 
-	@Test(priority = 8, description = "Verify whether a doctor can send a message to a patient during the video consultation and also patient can see the message sent by the doctor")
-	@Severity(SeverityLevel.MINOR)
-	@Description("Send message by doctor")
+	@Test(priority = 8, description = "Send message by doctor")
 	public void sendMessageDoctor() {
-
+		testDescription = "Verify whether a doctor can send a message to a patient during the video consultation and also patient can see the message sent by the doctor"; 
 		driver.findElement(By.xpath("//input[@placeholder='Enter a message']")).sendKeys("Hello patient");
 		driver.findElement(By.xpath("//button[contains(text(), 'Send')]")).click();
 
@@ -417,11 +399,9 @@ public class Superdrug {
 		}
 	}
 
-	@Test(priority = 9, description = "Verify whether a patient can send a message to a doctor during the video consultation and also doctor can see the message sent by the patient")
-	@Severity(SeverityLevel.MINOR)
-	@Description("Send message by patient")
+	@Test(priority = 9, description = "Send message by patient")
 	public void sendMessagePatient() {
-
+		testDescription = "Verify whether a patient can send a message to a doctor during the video consultation and also doctor can see the message sent by the patient";
 		driver.findElement(By.xpath("//input[@placeholder='Enter a message...']")).sendKeys("Hello doctor");
 		driver.findElement(By.xpath("//button[contains(text(), 'Send')]")).click();
 
@@ -437,11 +417,9 @@ public class Superdrug {
 		Assert.assertTrue(message);
 	}
 
-	@Test(priority = 10, description = "Verify whether a doctor can propose a prescription to a patient during the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Propose prescription by doctor")
+	@Test(priority = 10, description = "Propose prescription by doctor")
 	public void proposePrescriptionDoctor() {
-
+		testDescription = "Verify whether a doctor can propose a prescription to a patient during the video consultation";
 		driver.findElement(By
 				.xpath("//button[@aria-controls = 'dropdown-dropup']//parent::div//preceding-sibling::div[@class = 'btn-group dropup']//child::button"))
 				.click();
@@ -458,11 +436,9 @@ public class Superdrug {
 		Assert.assertTrue(ProposePrescription);
 	}
 
-	@Test(priority = 11, description = "Verify whether a patient can accept the prescription proposed by the doctor")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Accept prescription by patient")
+	@Test(priority = 11, description = "Accept prescription by patient")
 	public void acceptPrescriptionPatient() {
-
+		testDescription = "Verify whether a patient can accept the prescription proposed by the doctor";
 		driver.switchTo().window((String) tabs.get(0));
 
 		try {
@@ -484,11 +460,9 @@ public class Superdrug {
 		Assert.assertTrue(acceptPrescription);
 	}
 
-	@Test(priority = 12, description = "Verify whether a doctor can issue a prescription during the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Issue prescription by doctor")
+	@Test(priority = 12, description = "Issue prescription by doctor")
 	public void issuePrescriptionDoctor() {
-
+		testDescription = "Verify whether a doctor can issue a prescription during the video consultation";
 		driver.switchTo().window((String) tabs.get(1));
 
 		try {
@@ -540,11 +514,9 @@ public class Superdrug {
 		}
 	}
 
-	@Test(priority = 13, description = "Verify whether a doctor can propose a fit note to a patient during the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Propose fit note by doctor")
+	@Test(priority = 13, description = "Propose fit note by doctor")
 	public void proposeFitNoteDoctor() {
-
+		testDescription = "Verify whether a doctor can propose a fit note to a patient during the video consultation";
 		driver.findElement(By
 				.xpath("//button[@aria-controls = 'dropdown-dropup']//parent::div//preceding-sibling::div[@class = 'btn-group dropup']//child::button"))
 				.click();
@@ -561,13 +533,9 @@ public class Superdrug {
 		Assert.assertTrue(ProposeFitNote);
 	}
 
-	@Test(priority = 14, description = "Verify whether a patient can accept the fit note proposed by the doctor")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Accept fit note by patient")
+	@Test(priority = 14, description = "Accept fit note by patient")
 	public void acceptFitNotePatient() {
-
-		//
-
+		testDescription = "Verify whether a patient can accept the fit note proposed by the doctor";
 		driver.switchTo().window((String) tabs.get(0));
 
 		try {
@@ -588,11 +556,9 @@ public class Superdrug {
 		Assert.assertTrue(acceptFitNote);
 	}
 
-	@Test(priority = 15, description = "Verify whether a doctor can issue a fit note during the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Issue fit note by doctor")
+	@Test(priority = 15, description = "Issue fit note by doctor")
 	public void issueFitNoteDoctor() {
-
+		testDescription = "Verify whether a doctor can issue a fit note during the video consultation";
 		driver.switchTo().window((String) tabs.get(1));
 
 		try {
@@ -629,11 +595,9 @@ public class Superdrug {
 		}
 	}
 
-	@Test(priority = 16, description = "Verify whether a doctor can propose a referral letter to a patient during the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Propose referral letter by doctor")
+	@Test(priority = 16, description = "Propose referral letter by doctor")
 	public void proposeReferralLetterDoctor() {
-
+		testDescription = "Verify whether a doctor can propose a referral letter to a patient during the video consultation";
 		driver.findElement(By
 				.xpath("//button[@aria-controls = 'dropdown-dropup']//parent::div//preceding-sibling::div[@class = 'btn-group dropup']//child::button"))
 				.click();
@@ -650,13 +614,10 @@ public class Superdrug {
 		Assert.assertTrue(ProposeReferralLetter);
 	}
 
-	@Test(priority = 17, description = "Verify whether a patient can accept the referral letter proposed by the doctor")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Accept referral letter by patient")
+	@Test(priority = 17, description = "Accept referral letter by patient")
 	public void acceptReferralLetterPatient() {
 
-		//
-
+		testDescription = "Verify whether a patient can accept the referral letter proposed by the doctor";
 		driver.switchTo().window((String) tabs.get(0));
 
 		try {
@@ -678,11 +639,9 @@ public class Superdrug {
 		Assert.assertTrue(acceptReferralLetter);
 	}
 
-	@Test(priority = 18, description = "Verify whether a doctor can issue a referral letter during the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Issue referral letter by doctor")
+	@Test(priority = 18, description = "Issue referral letter by doctor")
 	public void issueReferralLetterDoctor() {
-
+		testDescription = "Verify whether a doctor can issue a referral letter during the video consultation";
 		driver.switchTo().window((String) tabs.get(1));
 
 		try {
@@ -723,11 +682,9 @@ public class Superdrug {
 		}
 	}
 
-	@Test(priority = 19, description = "Verify whether a doctor can extend the video consultation time")
-	@Severity(SeverityLevel.MINOR)
-	@Description("Extend call by doctor")
+	@Test(priority = 19, description = "Extend call by doctor")
 	public void extendCallDoctor() {
-
+		testDescription = "Verify whether a doctor can extend the video consultation time";
 		driver.findElement(By.xpath("//button[@aria-controls = 'dropdown-dropup']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Extend (£25.00)')]")).click();
 
@@ -744,11 +701,9 @@ public class Superdrug {
 		Assert.assertTrue(extend);
 	}
 
-	@Test(priority = 20, description = "Verify whether a doctor can end the video consultation call")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("End call by doctor")
+	@Test(priority = 20, description = "End call by doctor")
 	public void endCallDoctor() {
-
+		testDescription = "Verify whether a doctor can end the video consultation call";
 		try {
 			Thread.sleep(60000);
 		} catch (InterruptedException e) {
@@ -798,11 +753,9 @@ public class Superdrug {
 
 	}
 
-	@Test(priority = 21, description = "Verify whether a patient can end the video consultation call")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("End call by patient")
+	@Test(priority = 21, description = "End call by patient")
 	public void endCallPatient() {
-
+		testDescription = "Verify whether a patient can end the video consultation call";
 		driver.switchTo().window((String) tabs.get(0));
 
 		try {
@@ -834,11 +787,9 @@ public class Superdrug {
 		Assert.assertTrue(status);
 	}
 
-	@Test(priority = 22, description = "Verify whether a patient can view the fit note after the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("View fit note by patient")
+	@Test(priority = 22, description = "View fit note by patient")
 	public void ViewFitnotePatient() {
-
+		testDescription = "Verify whether a patient can view the fit note after the video consultation";
 		/*
 		 * WebElement view = driver.findElement(By.xpath(
 		 * "//span[text() = 'Complete']//parent::td//following-sibling::td//following-sibling::td//child::a[text() = 'View']"
@@ -891,11 +842,9 @@ public class Superdrug {
 		driver.navigate().back();
 	}
 
-	@Test(priority = 23, description = "Verify whether a patient can view the referral letter after the video consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("View referral letter by patient")
+	@Test(priority = 23, description = "View referral letter by patient")
 	public void ViewReferralLetterPatient() {
-
+		testDescription = "Verify whether a patient can view the referral letter after the video consultation";
 		WebElement ref = driver.findElement(By.linkText("View Referral Letter"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ref);
 		try {
@@ -935,11 +884,9 @@ public class Superdrug {
 
 	}
 
-	@Test(priority = 24, description = "Verify whether a patient can view the invoice of a paticular consultation")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("View invoice by patient")
+	@Test(priority = 24, description = "View invoice by patient")
 	public void ViewInvoicePatient() {
-
+		testDescription = "Verify whether a patient can view the invoice of a paticular consultation";
 		WebElement invoice = driver.findElement(By.linkText("View Invoice"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", invoice);
 		try {

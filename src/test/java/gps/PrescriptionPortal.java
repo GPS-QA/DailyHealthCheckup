@@ -13,11 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import prop.Properties;
 
 public class PrescriptionPortal{
@@ -35,6 +31,8 @@ public class PrescriptionPortal{
 	String password = Properties.password;
 	
 	String fullName = firstName + " " + lastName;
+	
+	String testDescription = "";
 	
 	@BeforeClass
 	public void Setup() {
@@ -54,10 +52,9 @@ public class PrescriptionPortal{
 		driver.quit();
 	}
 
-	@Test(priority = 1, description = "Verify whether a doctor can sign in to the system")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Sign in by doctor")
+	@Test(priority = 1, description = "Sign in by doctor")
 	public void SignInDoctor() {
+		testDescription = "Verify whether a doctor can sign in to the system";
 
 		driver.findElement(By.id("username")).sendKeys(emailDoctorNonGPS);
 		driver.findElement(By.id("password")).sendKeys(password);
@@ -76,11 +73,9 @@ public class PrescriptionPortal{
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 2, description = "Verify whether a doctor can create a prescription")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Create prescription by doctor")
+	@Test(priority = 2, description = "Create prescription by doctor")
 	public void CreatePrescriptionDoctor() {
-
+		testDescription = "Verify whether a doctor can create a prescription";
 		driver.findElement(By.xpath("//button[text() = 'Create Prescription (Patient)']")).click();
 
 		try {
@@ -170,11 +165,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 3, description = "Verify whether an admin doctor can add formulary")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Add formulary")
+	@Test(priority = 3, description = "Add formulary")
 	public void AddFormulary() {
-
+		testDescription = "Verify whether an admin doctor can add formulary";
 		driver.findElement(By.xpath("//a[text() = 'Formulary']")).click();
 		driver.findElement(
 				By.xpath("//input[@placeholder='ID, name, formulation or strength']//preceding-sibling::button"))
@@ -203,11 +196,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 4, description = "Verify whether a doctor can search formulary")
-	@Severity(SeverityLevel.NORMAL)
-	@Description("Search formulary")
+	@Test(priority = 4, description = "Search formulary")
 	public void SearchFormulary() {
-
+		testDescription = "Verify whether a doctor can search formulary";
 		driver.findElement(By.xpath("//input[@placeholder='ID, name, formulation or strength']"))
 				.sendKeys("Medication");
 		driver.findElement(By.xpath("//span[@class='glyphicon glyphicon-search']")).click();
@@ -224,11 +215,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 5, description = "Verify whether an admin doctor can edit formulary")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Edit formulary")
+	@Test(priority = 5, description = "Edit formulary")
 	public void EditFormulary() {
-
+		testDescription = "Verify whether an admin doctor can edit formulary";
 		driver.findElement(By
 				.xpath("//th[text()='ID']//parent::tr//parent::thead//following-sibling::tbody//child::tr//child::td[@class='col-md-1 ng-star-inserted']//child::button[@class='btn btn-sm btn-primary']"))
 				.click();
@@ -263,11 +252,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 6, description = "Verify whether an admin doctor can delete formulary")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Delete formulary")
+	@Test(priority = 6, description = "Delete formulary")
 	public void DeleteFormulary() {
-
+		testDescription = "Verify whether an admin doctor can delete formulary";
 		driver.findElement(By
 				.xpath("//th[text()='ID']//parent::tr//parent::thead//following-sibling::tbody//child::tr//child::td[@class='col-md-1 ng-star-inserted']//child::button[@class='btn btn-sm btn-danger']"))
 				.click();
@@ -290,11 +277,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 7, description = "Verify whether a doctor can logout from the system")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Logout by doctor")
+	@Test(priority = 7, description = "Logout by doctor")
 	public void LogoutDoctor() {
-
+		testDescription = "Verify whether a doctor can logout from the system";
 		driver.findElement(By.xpath("//a[@aria-haspopup='true']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 
@@ -310,11 +295,9 @@ public class PrescriptionPortal{
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 8, description = "Verify whether a vet can sign in to the system")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Sign in by vet")
+	@Test(priority = 8, description = "Sign in by vet")
 	public void SignInVet() {
-
+		testDescription = "Verify whether a vet can sign in to the system";
 		driver.findElement(By.id("username")).sendKeys(emailVet);
 		driver.findElement(By.id("password")).sendKeys(password);
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
@@ -331,11 +314,9 @@ public class PrescriptionPortal{
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 9, description = "Verify whether a vet can create a prescription")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Create prescription by vet")
+	@Test(priority = 9, description = "Create prescription by vet")
 	public void CreatePrescriptionVet() {
-
+		testDescription = "Verify whether a vet can create a prescription";
 		driver.findElement(By.xpath("//button[text() = 'Create Prescription (Pet)']")).click();
 
 		try {
@@ -433,11 +414,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 10, description = "Verify whether a vet can logout from the system")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Logout by vet")
+	@Test(priority = 10, description = "Logout by vet")
 	public void LogoutVet() {
-
+		testDescription = "Verify whether a vet can logout from the system";
 		driver.findElement(By.xpath("//a[@aria-haspopup='true']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 
@@ -453,11 +432,9 @@ public class PrescriptionPortal{
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 11, description = "Verify whether a phamacist can sign in to the system")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Sign in by phamacist")
+	@Test(priority = 11, description = "Sign in by phamacist")
 	public void SignInPhamacist() {
-
+		testDescription = "Verify whether a phamacist can sign in to the system";
 		driver.findElement(By.id("username")).sendKeys(emailPhamacist);
 		driver.findElement(By.id("password")).sendKeys(password);
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
@@ -474,12 +451,10 @@ public class PrescriptionPortal{
 		Assert.assertEquals(current_url, expected_url);
 	}
 
-	@Test(priority = 12, description = "Verify whether a phamacist can create a prescription")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Create prescription by phamacist")
+	@Test(priority = 12, description = "Create prescription by phamacist")
 	public void CreatePrescriptionPhamacist() {
 
-
+		testDescription = "Verify whether a phamacist can create a prescription";
 		driver.findElement(By.xpath("//button[text() = 'Create Prescription (Patient)']")).click();
 
 		try {
@@ -569,11 +544,9 @@ public class PrescriptionPortal{
 		}
 	}
 
-	@Test(priority = 13, description = "Verify whether a phamacist can logout from the system")
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Logout by phamacist")
+	@Test(priority = 13, description = "Logout by phamacist")
 	public void LogoutPhamacist() {
-
+		testDescription = "Verify whether a phamacist can logout from the system";
 		driver.findElement(By.xpath("//a[@aria-haspopup='true']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 
