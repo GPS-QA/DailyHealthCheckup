@@ -39,7 +39,7 @@ public class Pharmacy {
 	@AfterMethod
 	public void getResult(ITestResult result) throws Exception {
 		
-		Properties.test = Properties.extent.createTest(result.getMethod().getDescription()).assignCategory("MyTest").assignAuthor("Thanuji Wijerathna");
+		Properties.test = Properties.extent.createTest(result.getMethod().getDescription()).assignCategory("Pharmacy").assignAuthor("Thanuji Wijerathna");
 		if (result.getStatus() == ITestResult.FAILURE) {
 			Properties.test.fail(testDescription);
 		} else if (result.getStatus() == ITestResult.SKIP) {
